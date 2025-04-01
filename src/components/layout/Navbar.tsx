@@ -1,11 +1,11 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,8 +41,17 @@ const Navbar = () => {
           <Link to="/resources" className="text-gray-700 hover:text-blue-600 transition-colors">
             Resources
           </Link>
-          <Link to="/crowdfunding" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Crowdfunding
+          <Link 
+            to="/crowdfunding" 
+            className="text-blue-600 font-semibold hover:text-blue-800 transition-colors flex items-center gap-1"
+          >
+            <span className="relative">
+              Crowdfunding
+              <span className="absolute -top-1 -right-2 flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+              </span>
+            </span>
           </Link>
           <Link to="/scholarships" className="text-gray-700 hover:text-blue-600 transition-colors">
             Scholarships
@@ -53,9 +62,22 @@ const Navbar = () => {
           <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
             Contact
           </Link>
-          <Button variant="default" className="bg-yellow-500 hover:bg-yellow-600 text-white">
-            Sign In
-          </Button>
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="outline"
+              className="border-yellow-500 text-yellow-500 hover:bg-yellow-50"
+              onClick={() => navigate('/login')}
+            >
+              Sign In
+            </Button>
+            <Button
+              variant="default"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white"
+              onClick={() => navigate('/signup')}
+            >
+              Sign Up
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -74,8 +96,18 @@ const Navbar = () => {
               <Link to="/resources" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Resources
               </Link>
-              <Link to="/crowdfunding" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
-                Crowdfunding
+              <Link 
+                to="/crowdfunding" 
+                className="text-blue-600 font-semibold hover:text-blue-800 transition-colors py-2 flex items-center gap-1" 
+                onClick={toggleMenu}
+              >
+                <span className="relative">
+                  Crowdfunding
+                  <span className="absolute -top-1 -right-2 flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                  </span>
+                </span>
               </Link>
               <Link to="/scholarships" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Scholarships
@@ -86,9 +118,28 @@ const Navbar = () => {
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Contact
               </Link>
-              <Button variant="default" className="bg-yellow-500 hover:bg-yellow-600 text-white w-full mt-2">
-                Sign In
-              </Button>
+              <div className="flex flex-col space-y-2">
+                <Button
+                  variant="outline"
+                  className="border-yellow-500 text-yellow-500 hover:bg-yellow-50 w-full"
+                  onClick={() => {
+                    navigate('/login');
+                    toggleMenu();
+                  }}
+                >
+                  Sign In
+                </Button>
+                <Button
+                  variant="default"
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+                  onClick={() => {
+                    navigate('/signup');
+                    toggleMenu();
+                  }}
+                >
+                  Sign Up
+                </Button>
+              </div>
             </div>
           </div>
         )}

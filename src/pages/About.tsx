@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 
 const About = () => {
@@ -72,51 +71,42 @@ const About = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Our Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {/* Team member cards would go here */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
             <div className="text-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4">
+              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
                 <img 
-                  src="https://randomuser.me/api/portraits/men/32.jpg" 
-                  alt="Team member" 
+                  src="/team/aryan-rastogi.jpg" 
+                  alt="Aryan Rastogi" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-lg font-semibold">Rajesh Kumar</h3>
+              <h3 className="text-xl font-semibold">Aryan Rastogi</h3>
               <p className="text-gray-600">Founder & CEO</p>
+              <p className="text-sm text-gray-500 mt-1">Building dreams through technology</p>
             </div>
             <div className="text-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4">
+              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
                 <img 
-                  src="https://randomuser.me/api/portraits/women/44.jpg" 
-                  alt="Team member" 
+                  src="/placeholder.jpg" 
+                  alt="Raghav Sethi" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-lg font-semibold">Anita Singh</h3>
-              <p className="text-gray-600">Head of Scholarships</p>
+              <h3 className="text-xl font-semibold">Raghav Sethi</h3>
+              <p className="text-gray-600">Co-founder</p>
+              <p className="text-sm text-gray-500 mt-1">Innovating education access</p>
             </div>
             <div className="text-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4">
+              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
                 <img 
-                  src="https://randomuser.me/api/portraits/men/62.jpg" 
-                  alt="Team member" 
+                  src="/team/harshita-singh.jpg" 
+                  alt="Harshita Singh" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-lg font-semibold">Vikram Mehta</h3>
-              <p className="text-gray-600">Mentorship Director</p>
-            </div>
-            <div className="text-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4">
-                <img 
-                  src="https://randomuser.me/api/portraits/women/28.jpg" 
-                  alt="Team member" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-lg font-semibold">Meera Patel</h3>
-              <p className="text-gray-600">Crowdfunding Manager</p>
+              <h3 className="text-xl font-semibold">Harshita Singh</h3>
+              <p className="text-gray-600">Co-founder</p>
+              <p className="text-sm text-gray-500 mt-1">Empowering student success</p>
             </div>
           </div>
         </div>
