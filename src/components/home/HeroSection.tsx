@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4 animate-fade-in">
-              Empowering Dreams Through Education & Mentorship
+              Welcome to Protsahan - Empowering Dreams Through Education & Mentorship
             </h2>
             <p className="text-lg md:text-xl mb-8 text-blue-100">
               Access scholarships, mentorship, resources, and crowdfunding opportunities all in one place.
@@ -61,3 +62,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
