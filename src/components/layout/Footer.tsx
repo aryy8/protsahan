@@ -22,7 +22,7 @@ const Footer = () => {
               <a href="#" className="text-white hover:text-yellow-400">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white hover:text-yellow-400">
+              <a href="https://www.linkedin.com/in/aryy8" target="_blank" rel="noreferrer" className="text-white hover:text-yellow-400">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -41,9 +41,6 @@ const Footer = () => {
                 <Link to="/mentorship" className="text-gray-300 hover:text-yellow-400">Mentorship</Link>
               </li>
               <li>
-                <Link to="/resources" className="text-gray-300 hover:text-yellow-400">Resources</Link>
-              </li>
-              <li>
                 <Link to="/crowdfunding" className="text-gray-300 hover:text-yellow-400">Crowdfunding</Link>
               </li>
             </ul>
@@ -58,12 +55,6 @@ const Footer = () => {
               <li>
                 <Link to="/mentorship" className="text-gray-300 hover:text-yellow-400">Mentorship</Link>
               </li>
-              <li>
-                <Link to="/resources" className="text-gray-300 hover:text-yellow-400">Free Resources</Link>
-              </li>
-              <li>
-                <Link to="/success-stories" className="text-gray-300 hover:text-yellow-400">Success Stories</Link>
-              </li>
             </ul>
           </div>
 
@@ -71,10 +62,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-2">
               <p className="flex items-center text-gray-300">
-                <Mail size={16} className="mr-2" /> info@protsahan.org
+                <Mail size={16} className="mr-2" /> 
+                <a href="mailto:aryanfeb17@gmail.com" className="hover:text-yellow-400">
+                  aryanfeb17@gmail.com
+                </a>
               </p>
               <p className="flex items-center text-gray-300">
                 <Phone size={16} className="mr-2" /> +91 98765 43210
+              </p>
+              <p className="flex items-center text-gray-300">
+                <Linkedin size={16} className="mr-2" /> 
+                <a href="https://www.linkedin.com/in/aryy8" target="_blank" rel="noreferrer" className="hover:text-yellow-400">
+                  linkedin.com/in/aryy8
+                </a>
               </p>
             </div>
           </div>

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -38,9 +39,6 @@ const Navbar = () => {
           <Link to="/mentorship" className="text-gray-700 hover:text-blue-600 transition-colors">
             Mentorship
           </Link>
-          <Link to="/resources" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Resources
-          </Link>
           <Link 
             to="/crowdfunding" 
             className="text-blue-600 font-semibold hover:text-blue-800 transition-colors flex items-center gap-1"
@@ -55,9 +53,6 @@ const Navbar = () => {
           </Link>
           <Link to="/scholarships" className="text-gray-700 hover:text-blue-600 transition-colors">
             Scholarships
-          </Link>
-          <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-colors">
-            Success Stories
           </Link>
           <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
             Contact
@@ -93,9 +88,6 @@ const Navbar = () => {
               <Link to="/mentorship" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Mentorship
               </Link>
-              <Link to="/resources" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
-                Resources
-              </Link>
               <Link 
                 to="/crowdfunding" 
                 className="text-blue-600 font-semibold hover:text-blue-800 transition-colors py-2 flex items-center gap-1" 
@@ -111,9 +103,6 @@ const Navbar = () => {
               </Link>
               <Link to="/scholarships" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Scholarships
-              </Link>
-              <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
-                Success Stories
               </Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors py-2" onClick={toggleMenu}>
                 Contact
