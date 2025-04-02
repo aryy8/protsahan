@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
@@ -33,9 +32,9 @@ const Mentorship = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1541555645879-1e5c83020824?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                src="/placeholder.svg" 
                 alt="Mentorship session" 
-                className="w-full h-auto"
+                className="w-full h-auto object-cover aspect-video"
               />
             </div>
           </div>
