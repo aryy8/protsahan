@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import StudentSignUp from './pages/StudentSignUp';
 import Login from './pages/Login';
 import CrowdfundingDashboard from './pages/Crowdfunding';
+import Contact from './pages/Contact';
 import './App.css';
 
 const queryClient = new QueryClient();
@@ -29,6 +31,7 @@ const App = () => (
           <Route path="/signup" element={<StudentSignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/crowdfunding" element={<CrowdfundingDashboard />} />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
