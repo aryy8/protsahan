@@ -1,3 +1,4 @@
+
 import Layout from "@/components/layout/Layout";
 
 const About = () => {
@@ -87,19 +88,7 @@ const About = () => {
             <div className="text-center">
               <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
                 <img 
-                  src="/placeholder.jpg" 
-                  alt="Raghav Sethi" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-semibold">Raghav Sethi</h3>
-              <p className="text-gray-600">Co-founder</p>
-              <p className="text-sm text-gray-500 mt-1">Innovating education access</p>
-            </div>
-            <div className="text-center">
-              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
-                <img 
-                  src="/team/harshita-singh.jpg" 
+                  src="/lovable-uploads/ac5fb290-342f-44bd-933e-688b72f59c0c.png" 
                   alt="Harshita Singh" 
                   className="w-full h-full object-cover"
                 />
@@ -107,6 +96,18 @@ const About = () => {
               <h3 className="text-xl font-semibold">Harshita Singh</h3>
               <p className="text-gray-600">Co-founder</p>
               <p className="text-sm text-gray-500 mt-1">Empowering student success</p>
+            </div>
+            <div className="text-center">
+              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 border-2 border-blue-600 hover:border-yellow-500 transition-colors duration-300">
+                <img 
+                  src="/lovable-uploads/3984ca52-48a8-476a-9935-ffe3a03e49c8.png" 
+                  alt="Raghav Sethi" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-semibold">Raghav Sethi</h3>
+              <p className="text-gray-600">Co-founder</p>
+              <p className="text-sm text-gray-500 mt-1">Innovating education access</p>
             </div>
           </div>
         </div>
