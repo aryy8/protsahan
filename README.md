@@ -1,73 +1,40 @@
-# Welcome to your Lovable project
+Protsahan
 
-## Project info
+Overview
 
-**URL**: https://lovable.dev/projects/3d8837b1-90db-4b52-849d-5426f577fd34
+Protsahan is an initiative aimed at providing mentorship, guidance, and learning resources to students and aspiring professionals. The project focuses on bridging the gap between knowledge seekers and industry experts through structured programs, interactive sessions, and accessible materials.
 
-## How can I edit this code?
+This project was developed for the Google Solution Challenge under the problem statement Breaking Financial Barriers to Ensure Equal Access to Education.
 
-There are several ways of editing your application.
+Team Members
 
-**Use Lovable**
+Aryan Rastogi
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3d8837b1-90db-4b52-849d-5426f577fd34) and start prompting.
+Harshita Singh
 
-Changes made via Lovable will be committed automatically to this repo.
+Raghav Sethi
 
-**Use your preferred IDE**
+Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Mentorship Programs: Connects students with experienced mentors in various fields.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Skill Development: Provides curated learning resources and courses.
 
-Follow these steps:
+Interactive Sessions: Conducts webinars, Q&A sessions, and one-on-one guidance.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Career Support: Helps with resume building, interview preparation, and career counseling.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Community Engagement: Encourages networking and collaboration among peers.
 
-# Step 3: Install the necessary dependencies.
-npm i
+Technologies Used
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Frontend: React.js (for an intuitive user interface)
 
-**Edit a file directly in GitHub**
+Backend: Node.js with Express (for API management)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Database: MongoDB (for storing user profiles, mentorship programs, and resources)
 
-**Use GitHub Codespaces**
+Authentication: Firebase/Auth0 (for secure login and access control)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Deployment: Vercel/Heroku (for hosting and deployment)
 
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/3d8837b1-90db-4b52-849d-5426f577fd34) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
