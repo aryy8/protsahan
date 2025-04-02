@@ -1,4 +1,4 @@
-# Protsahan Project
+# Protsahan
 
 ## Overview
 Protsahan is an initiative aimed at providing mentorship, guidance, and learning resources to students and aspiring professionals. The project focuses on bridging the gap between knowledge seekers and industry experts through structured programs, interactive sessions, and accessible materials.  
