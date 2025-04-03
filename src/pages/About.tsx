@@ -31,8 +31,8 @@ const About = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                alt="Students in a classroom" 
+                src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                alt="Rural Indian children studying" 
                 className="w-full h-auto"
               />
             </div>
