@@ -9,7 +9,7 @@ export async function getAIResponse(userMessage: string): Promise<string> {
   try {
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash",
-      contents: userMessage,
+      contents: "reply under 150 words, do not use bold text, only respond with answer" + userMessage,
     });
 
     return response.text || "Sorry, I couldn't generate a response.";
