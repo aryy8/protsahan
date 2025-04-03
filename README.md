@@ -10,4 +10,4 @@ This project was developed for the **Google Solution Challenge 2025** under the 
 - **Harshita Singh**  
 - **Raghav Sethi**  
 
-link: https://protsahan.lovable.app
+https://protsahan.vercel.app/
