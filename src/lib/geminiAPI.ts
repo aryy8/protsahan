@@ -78,3 +78,51 @@ export async function getScholarshipRecommendations(
     return [];
   }
 }
+
+export async function processVoiceInput(audioBlob: Blob, fieldType: string): Promise<string> {
+  try {
+    // Convert audio blob to base64
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onloadend = async () => {
+        try {
+          // In a real implementation, you would send this to Google's Speech-to-Text API
+          // For now, we're simulating the response
+          
+          // This simulates processing time
+          await new Promise(r => setTimeout(r, 1000));
+          
+          // Return a simulated response based on field type
+          switch (fieldType) {
+            case 'name':
+              return resolve('John Doe');
+            case 'email':
+              return resolve('john.doe@example.com');
+            case 'education':
+              return resolve('Undergraduate');
+            case 'fieldOfStudy':
+              return resolve('Computer Science');
+            case 'achievements':
+              return resolve('Dean\'s list for 3 consecutive semesters, won the national coding competition');
+            case 'financialNeed':
+              return resolve('Medium');
+            case 'extracurriculars':
+              return resolve('Member of computer science club, volunteer at local shelter');
+            default:
+              return resolve('');
+          }
+        } catch (error) {
+          console.error('Error processing voice input:', error);
+          reject('Failed to process voice input');
+        }
+      };
+      reader.onerror = () => {
+        reject('Failed to read audio file');
+      };
+      reader.readAsDataURL(audioBlob);
+    });
+  } catch (error) {
+    console.error('Error in voice processing:', error);
+    return 'Error processing voice input';
+  }
+}

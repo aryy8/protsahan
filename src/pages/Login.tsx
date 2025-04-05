@@ -1,5 +1,9 @@
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import VoiceInput from '@/components/VoiceInput';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/use-toast';
 
 interface LoginData {
   email: string;
@@ -38,6 +42,10 @@ export default function Login() {
       try {
         // TODO: Implement actual login logic here
         console.log('Form submitted:', formData);
+        toast({
+          title: "Login attempt",
+          description: "Login functionality will be implemented soon.",
+        });
         // Redirect to dashboard after successful login
         // navigate('/dashboard');
       } catch (error) {
@@ -51,6 +59,13 @@ export default function Login() {
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  const handleVoiceResult = (fieldName: keyof LoginData, text: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [fieldName]: text
     }));
   };
 
@@ -75,40 +90,50 @@ export default function Login() {
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
               </label>
-              <div className="mt-1">
-                <input
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <Input
                   id="email"
                   name="email"
                   type="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="flex-grow"
                   value={formData.email}
                   onChange={handleChange}
                 />
-                {errors.email && (
-                  <p className="mt-2 text-sm text-red-600">{errors.email}</p>
-                )}
+                <VoiceInput 
+                  fieldType="email" 
+                  onResult={(text) => handleVoiceResult('email', text)}
+                  className="ml-2" 
+                />
               </div>
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+              )}
             </div>
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
-              <div className="mt-1">
-                <input
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <Input
                   id="password"
                   name="password"
                   type="password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="flex-grow"
                   value={formData.password}
                   onChange={handleChange}
                 />
-                {errors.password && (
-                  <p className="mt-2 text-sm text-red-600">{errors.password}</p>
-                )}
+                <VoiceInput 
+                  fieldType="password" 
+                  onResult={(text) => handleVoiceResult('password', text)}
+                  className="ml-2" 
+                />
               </div>
+              {errors.password && (
+                <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+              )}
             </div>
 
             <div className="flex items-center justify-between">
@@ -144,4 +169,4 @@ export default function Login() {
       </div>
     </div>
   );
-} 
+}
