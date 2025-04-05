@@ -55,6 +55,10 @@ const VoiceInput: React.FC<VoiceInputProps> = ({ fieldType, onResult, className 
 
       mediaRecorder.start();
       setIsRecording(true);
+      toast({
+        title: "Recording started",
+        description: "Speak now and click the button again when finished.",
+      });
     } catch (error) {
       console.error('Error accessing microphone:', error);
       toast({
@@ -88,6 +92,7 @@ const VoiceInput: React.FC<VoiceInputProps> = ({ fieldType, onResult, className 
       className={className}
       onClick={toggleRecording}
       disabled={isProcessing}
+      title={isRecording ? "Stop recording" : "Start voice input"}
     >
       {isProcessing ? (
         <Loader2 className="h-4 w-4 animate-spin" />

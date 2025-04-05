@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({
@@ -80,49 +79,81 @@ export async function getScholarshipRecommendations(
 }
 
 export async function processVoiceInput(audioBlob: Blob, fieldType: string): Promise<string> {
-  try {
-    // Convert audio blob to base64
-    const reader = new FileReader();
-    return new Promise((resolve, reject) => {
-      reader.onloadend = async () => {
-        try {
-          // In a real implementation, you would send this to Google's Speech-to-Text API
-          // For now, we're simulating the response
-          
-          // This simulates processing time
-          await new Promise(r => setTimeout(r, 1000));
-          
-          // Return a simulated response based on field type
-          switch (fieldType) {
-            case 'name':
-              return resolve('John Doe');
-            case 'email':
-              return resolve('john.doe@example.com');
-            case 'education':
-              return resolve('Undergraduate');
-            case 'fieldOfStudy':
-              return resolve('Computer Science');
-            case 'achievements':
-              return resolve('Dean\'s list for 3 consecutive semesters, won the national coding competition');
-            case 'financialNeed':
-              return resolve('Medium');
-            case 'extracurriculars':
-              return resolve('Member of computer science club, volunteer at local shelter');
-            default:
-              return resolve('');
-          }
-        } catch (error) {
-          console.error('Error processing voice input:', error);
-          reject('Failed to process voice input');
+  return new Promise((resolve, reject) => {
+    try {
+      // Use the Web Speech API for real speech recognition
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      
+      // Create an audio element to play back the recording
+      const audio = new Audio(URL.createObjectURL(audioBlob));
+      
+      recognition.onresult = (event) => {
+        const speechResult = event.results[0][0].transcript;
+        console.log(`Speech recognized: ${speechResult}`);
+        
+        // Process text based on field type
+        let processedText = speechResult;
+        
+        // Format the recognized text according to the field type
+        switch (fieldType) {
+          case 'email':
+            // Remove spaces and convert to lowercase for email format
+            processedText = speechResult.toLowerCase().replace(/\s+/g, '');
+            if (!processedText.includes('@') && !processedText.includes('at')) {
+              processedText += '@gmail.com'; // Add default domain if none mentioned
+            } else {
+              // Replace "at" with @ if needed
+              processedText = processedText.replace(/\s+at\s+/i, '@');
+            }
+            break;
+            
+          case 'password':
+          case 'confirmPassword':
+            // For passwords, use the spoken text directly
+            break;
+            
+          case 'education':
+          case 'financialNeed':
+            // Format as proper case for select fields
+            processedText = speechResult.charAt(0).toUpperCase() + speechResult.slice(1).toLowerCase();
+            break;
+            
+          default:
+            // For most fields, use sentence case
+            processedText = speechResult.charAt(0).toUpperCase() + speechResult.slice(1);
+        }
+        
+        resolve(processedText);
+      };
+      
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error', event.error);
+        reject(`Speech recognition error: ${event.error}`);
+      };
+      
+      recognition.onend = () => {
+        // If no result was detected, reject
+        if (!recognition.onresult) {
+          reject('No speech was detected');
         }
       };
-      reader.onerror = () => {
-        reject('Failed to read audio file');
+      
+      // Play the audio and start recognition
+      audio.onplay = () => {
+        recognition.start();
       };
-      reader.readAsDataURL(audioBlob);
-    });
-  } catch (error) {
-    console.error('Error in voice processing:', error);
-    return 'Error processing voice input';
-  }
+      
+      audio.onerror = () => {
+        reject('Error playing audio');
+      };
+      
+      audio.play();
+    } catch (error) {
+      console.error('Error in voice processing:', error);
+      reject('Speech recognition not supported in this browser');
+    }
+  });
 }
