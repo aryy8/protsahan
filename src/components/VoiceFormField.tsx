@@ -12,7 +12,7 @@ interface VoiceFormFieldProps {
   required?: boolean;
   placeholder?: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onVoiceResult: (text: string) => void;
   error?: string;
   as?: 'input' | 'textarea' | 'select';
@@ -73,7 +73,7 @@ const VoiceFormField: React.FC<VoiceFormFieldProps> = ({
             name={name}
             required={required}
             value={value}
-            onChange={onChange}
+            onChange={onChange as React.ChangeEventHandler<HTMLSelectElement>}
             className="flex-grow appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
           >
             {children}

@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getScholarshipRecommendations } from '@/lib/geminiAPI';
 import ScholarshipMatches from '@/components/ScholarshipMatches';
+import VoiceFormField from '@/components/VoiceFormField';
 
 interface FormData {
   fullName: string;
@@ -63,8 +63,6 @@ export default function StudentSignUp() {
       newErrors.confirmPassword = 'Passwords do not match';
     }
     
-    // Optional fields for scholarship matching don't need validation
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -91,7 +89,6 @@ export default function StudentSignUp() {
     
     if (validateForm()) {
       try {
-        // TODO: Implement actual signup logic here
         console.log('Form submitted:', formData);
         // Redirect to login or dashboard after successful signup
         // navigate('/login');
@@ -106,6 +103,13 @@ export default function StudentSignUp() {
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  const handleVoiceResult = (field: string, text: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: text
     }));
   };
 
@@ -130,105 +134,65 @@ export default function StudentSignUp() {
         {showForm ? (
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" onSubmit={handleFindScholarships}>
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-                  Full Name
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                  />
-                  {errors.fullName && (
-                    <p className="mt-2 text-sm text-red-600">{errors.fullName}</p>
-                  )}
-                </div>
-              </div>
+              <VoiceFormField
+                label="Full Name"
+                id="fullName"
+                name="fullName"
+                type="text"
+                required
+                value={formData.fullName}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('fullName', text)}
+                error={errors.fullName}
+              />
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email address
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                  {errors.email && (
-                    <p className="mt-2 text-sm text-red-600">{errors.email}</p>
-                  )}
-                </div>
-              </div>
+              <VoiceFormField
+                label="Email address"
+                id="email"
+                name="email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('email', text)}
+                error={errors.email}
+              />
 
-              <div>
-                <label htmlFor="studentId" className="block text-sm font-medium text-gray-700">
-                  Student ID
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="studentId"
-                    name="studentId"
-                    type="text"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.studentId}
-                    onChange={handleChange}
-                  />
-                  {errors.studentId && (
-                    <p className="mt-2 text-sm text-red-600">{errors.studentId}</p>
-                  )}
-                </div>
-              </div>
+              <VoiceFormField
+                label="Student ID"
+                id="studentId"
+                name="studentId"
+                type="text"
+                required
+                value={formData.studentId}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('studentId', text)}
+                error={errors.studentId}
+              />
 
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                  {errors.password && (
-                    <p className="mt-2 text-sm text-red-600">{errors.password}</p>
-                  )}
-                </div>
-              </div>
+              <VoiceFormField
+                label="Password"
+                id="password"
+                name="password"
+                type="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('password', text)}
+                error={errors.password}
+              />
 
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                  Confirm Password
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    type="password"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                  {errors.confirmPassword && (
-                    <p className="mt-2 text-sm text-red-600">{errors.confirmPassword}</p>
-                  )}
-                </div>
-              </div>
+              <VoiceFormField
+                label="Confirm Password"
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('confirmPassword', text)}
+                error={errors.confirmPassword}
+              />
 
               <div className="pt-4 border-t border-gray-200">
                 <h3 className="text-md font-semibold text-gray-700 mb-3">
@@ -236,105 +200,80 @@ export default function StudentSignUp() {
                 </h3>
               </div>
 
-              <div>
-                <label htmlFor="education" className="block text-sm font-medium text-gray-700">
-                  Education Level
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="education"
-                    name="education"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.education}
-                    onChange={handleChange}
-                  >
-                    <option value="">Select your education level</option>
-                    <option value="High School">High School</option>
-                    <option value="Undergraduate">Undergraduate</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="PhD">PhD</option>
-                  </select>
-                </div>
-              </div>
+              <VoiceFormField
+                label="Education Level"
+                id="education"
+                name="education"
+                as="select"
+                value={formData.education}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('education', text)}
+              >
+                <option value="">Select your education level</option>
+                <option value="High School">High School</option>
+                <option value="Undergraduate">Undergraduate</option>
+                <option value="Graduate">Graduate</option>
+                <option value="PhD">PhD</option>
+              </VoiceFormField>
 
-              <div>
-                <label htmlFor="fieldOfStudy" className="block text-sm font-medium text-gray-700">
-                  Field of Study
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="fieldOfStudy"
-                    name="fieldOfStudy"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.fieldOfStudy}
-                    onChange={handleChange}
-                  >
-                    <option value="">Select your field</option>
-                    <option value="Engineering">Engineering</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Business">Business</option>
-                    <option value="Arts & Humanities">Arts & Humanities</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Science">Science</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
+              <VoiceFormField
+                label="Field of Study"
+                id="fieldOfStudy"
+                name="fieldOfStudy"
+                as="select"
+                value={formData.fieldOfStudy}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('fieldOfStudy', text)}
+              >
+                <option value="">Select your field</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Business">Business</option>
+                <option value="Arts & Humanities">Arts & Humanities</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Science">Science</option>
+                <option value="Other">Other</option>
+              </VoiceFormField>
 
-              <div>
-                <label htmlFor="academicAchievements" className="block text-sm font-medium text-gray-700">
-                  Academic Achievements
-                </label>
-                <div className="mt-1">
-                  <textarea
-                    id="academicAchievements"
-                    name="academicAchievements"
-                    rows={3}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="List your achievements, awards, GPA, etc."
-                    value={formData.academicAchievements}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+              <VoiceFormField
+                label="Academic Achievements"
+                id="academicAchievements"
+                name="academicAchievements"
+                as="textarea"
+                rows={3}
+                placeholder="List your achievements, awards, GPA, etc."
+                value={formData.academicAchievements}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('academicAchievements', text)}
+              />
 
-              <div>
-                <label htmlFor="financialNeed" className="block text-sm font-medium text-gray-700">
-                  Financial Need
-                </label>
-                <div className="mt-1">
-                  <select
-                    id="financialNeed"
-                    name="financialNeed"
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    value={formData.financialNeed}
-                    onChange={handleChange}
-                  >
-                    <option value="">Select your financial need level</option>
-                    <option value="High">High need</option>
-                    <option value="Medium">Medium need</option>
-                    <option value="Low">Low need</option>
-                    <option value="None">No financial need</option>
-                  </select>
-                </div>
-              </div>
+              <VoiceFormField
+                label="Financial Need"
+                id="financialNeed"
+                name="financialNeed"
+                as="select"
+                value={formData.financialNeed}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('financialNeed', text)}
+              >
+                <option value="">Select your financial need level</option>
+                <option value="High">High need</option>
+                <option value="Medium">Medium need</option>
+                <option value="Low">Low need</option>
+                <option value="None">No financial need</option>
+              </VoiceFormField>
 
-              <div>
-                <label htmlFor="extracurriculars" className="block text-sm font-medium text-gray-700">
-                  Extracurricular Activities
-                </label>
-                <div className="mt-1">
-                  <textarea
-                    id="extracurriculars"
-                    name="extracurriculars"
-                    rows={3}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Sports, clubs, volunteer work, etc."
-                    value={formData.extracurriculars}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+              <VoiceFormField
+                label="Extracurricular Activities"
+                id="extracurriculars"
+                name="extracurriculars"
+                as="textarea"
+                rows={3}
+                placeholder="Sports, clubs, volunteer work, etc."
+                value={formData.extracurriculars}
+                onChange={handleChange}
+                onVoiceResult={(text) => handleVoiceResult('extracurriculars', text)}
+              />
 
               <div>
                 <button
